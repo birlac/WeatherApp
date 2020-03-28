@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        *{box-sizing: border-box;}
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: lightskyblue;
+        }
+
+        .topnav .search-container {
+            padding: 5px;
+            margin-left: 500px;
+            float: left;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .topnav .search-container button {
+            float: right;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: lightpink;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav .search-container button:hover {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/weather/find/" method="GET">
+            <input type="text" placeholder="Enter the city" name="search">
+            <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

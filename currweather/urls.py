@@ -3,7 +3,8 @@ from .import views
 import requests
 
 urlpatterns = [
-    path('', views.hello, name='hello'),
+    path('', views.search, name='search'),
     path('zip/', views.zip, name='ZipCode'),
     path('temp/', views.temp, name='Temperature'),
+    path('find/', views.find, name='find'),
 ]
