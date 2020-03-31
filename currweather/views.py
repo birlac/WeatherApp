@@ -10,15 +10,22 @@ def search(req):
 
 
 def find(req):
+    def dict_factory(cursor, row):
+        d = {}
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        return d
+
     conn = sqlite3.connect("city.db")   #making a connection to city.db
+    conn.row_factory = dict_factory
     c = conn.cursor()                   #allows us to execute sql commands
     search_str = req.GET["search"]
-    query = 'SELECT * FROM citydB WHERE name LIKE '+"'"+search_str+'%'+"'"
+    query = 'SELECT * FROM city WHERE name LIKE '+"'"+search_str+'%'+"'"
     #args = search_str + '%'
     #print(query)
     c.execute(query)
-    search_result = list(c.fetchall())
-    return HttpResponse(search_result)
+    search_result = c.fetchall()
+    return render(req, 'search_list.html', {'search_result':search_result})
 
 def zip(req):
     return render(req,'currweather/zip_weather.html')
