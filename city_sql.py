@@ -16,7 +16,7 @@ c = conn.cursor()                   #allows us to execute sql commands
 
 #execute the sql table
 
-c.execute("""CREATE TABLE citydB (
+c.execute("""CREATE TABLE city (
             city_id integer,
             name text,
             country text
@@ -25,7 +25,7 @@ c.execute("""CREATE TABLE citydB (
 count = 0
 for d in data:
     try:
-        c.execute("INSERT INTO citydB VALUES (:city_id, :name, :country)", {'city_id':d["id"], 'name':d["name"], 'country':d["country"]})
+        c.execute("INSERT INTO city VALUES (:city_id, :name, :country)", {'city_id':d["id"], 'name':d["name"], 'country':d["country"]})
     except Exception as E:
         print('Error: ', E)
     else:    
