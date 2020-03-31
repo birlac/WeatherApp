@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search Result</title>
 </head>
 <body>
-    {% for s in search_result %}
+    <h1>Search Results</h1>
     <ul>
-        <li>{% s["city_id"] %}, {% s["name"] %}, {% s["country"] %}</li>
+        {% for s in search_result %}
+            <li><a href="/weather/{{ s.city_id }}"> {{ s.name }}, {{ s.country }}</a></li>   
+        {% endfor %}
     </ul>
-    {% endfor %}
+    
 </body>
 </html>

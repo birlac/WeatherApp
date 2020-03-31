@@ -25,7 +25,14 @@ def find(req):
     #print(query)
     c.execute(query)
     search_result = c.fetchall()
-    return render(req, 'search_list.html', {'search_result':search_result})
+    context = {'search_result':search_result}
+    conn.close()
+    return render(req, 'currweather/search_list.html', context)
+
+def current(req, city_id):
+    source = requests.get('http://api.openweathermap.org/data/2.5/weather?id='+str(city_id)+'&appid=8822d04fc990a149594ad7f69d0912b6')
+    data = json.loads(source.text)
+    return render(req, 'currweather/weather_info.html', {'data':data})
 
 def zip(req):
     return render(req,'currweather/zip_weather.html')

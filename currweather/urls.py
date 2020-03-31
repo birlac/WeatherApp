@@ -7,4 +7,5 @@ urlpatterns = [
     path('zip/', views.zip, name='ZipCode'),
     path('temp/', views.temp, name='Temperature'),
     path('find/', views.find, name='find'),
+    path('<int:city_id>', views.current, name='currentweather'),
 ]
